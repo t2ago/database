@@ -50,3 +50,31 @@ lista_alunos = session.query(Aluno).all()
 
 for aluno in lista_alunos:
     print(f"{aluno.id} - {aluno.ra} - {aluno.nome} - {aluno.idade} - {aluno.email}")
+
+print("\nAtualizando dados.")
+ra_aluno = input("\nInforme o RA: ")
+
+aluno = session.query(Aluno).filter_by(ra = ra_aluno).first()
+os.system ("cls || clear")
+
+if aluno:
+    aluno.ra = input("Digite sua RA: ")
+    aluno.nome = input("Digite seu nome: ")
+    aluno.idade = input("Digite sua idade: ")
+    aluno.email = input("Digite seu email: ")
+    session.commit()
+else:
+    print("RA não encontrado.")
+
+print("\nPesquisando dados.")
+ra_aluno = input("\nInforme o RA: ")
+
+aluno = session.query(Aluno).filter_by(ra = ra_aluno).first()
+os.system ("cls || clear")
+
+if aluno:
+    print(f"{aluno.id} - {aluno.ra} - {aluno.nome} - {aluno.idade} - {aluno.email}")
+else:
+    print("RA não encontrado.")
+
+session.close()
