@@ -4,16 +4,18 @@ from config.connection import db
 
 Base = declarative_base()
 
-class User(Base):
-    __tablename__ = "users"
+class Aluno(Base):
+    __tablename__ = "alunos"
 
-    ra = Column(Integer, primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    ra = Column(String(250))
     nome = Column(String(250))
     sobrenome = Column(String(250))
     email = Column(String(250), unique=True)
     senha = Column(String(250))
 
-    def __init__(self, nome: str, sobrenome: str,  email: str, senha:str) -> None:
+    def __init__(self, ra: str, nome: str, sobrenome: str,  email: str, senha:str) -> None:
+        self.ra = ra
         self.nome = nome
         self.sobrenome = sobrenome
         self.email = email

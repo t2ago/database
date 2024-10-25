@@ -1,19 +1,31 @@
-from services.user_services import UserService
-from repositories.user_repository import UserRepository
+import os
+from models.aluno import Aluno
+from services.aluno_services import AlunoService
+from repositories.aluno_repository import AlunoRepository
 from config.connection import Session
 
 def main():
     session = Session()
-    repository = UserRepository(session)
-    service = UserService(repository)
+    repository = AlunoRepository(session)
+    service = AlunoService(repository)
 
-    service.create_user("Ana", "Ana", "ana@gmail.com", "123")
+    for i in range(1):
+        os.system ("cls || clear")
+        ra = input("Digite sua RA: ")
+        nome = input("Digite seu nome: ")
+        sobrenome = input("Digite seu sobrenome: ")
+        email = input("Digite seu email: ")
+        senha = input("Digite sua senha: ")
+
+        Aluno = Aluno(ra=ra, nome=nome, sobrenome=sobrenome, email=email, senha=senha)
+        session.add(aluno)
+        session.commit()
 
     print("\nListando dados.")
-    users = service.list_all_users()
+    alunos = service.list_all_alunos()
 
-    for user in users:
-        print(f"{user.nome} - {user.sobrenome} - {user.email} - {user.senha}")
+    for aluno in alunos:
+        print(f"{aluno.ra} - {aluno.nome} - {aluno.sobrenome} - {aluno.email} - {aluno.senha}")
 
 if __name__ == "__main__":
     main()
