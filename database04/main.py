@@ -12,7 +12,7 @@ def main():
     repository = AlunoRepository(session)
     service = AlunoService(repository)
 
-    for i in range(1):
+    for i in range(2):
         os.system ("cls || clear")
         ra = input("Digite sua RA: ")
         nome = input("Digite seu nome: ")
