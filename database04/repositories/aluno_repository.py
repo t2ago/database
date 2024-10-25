@@ -10,13 +10,13 @@ class AlunoRepository:
         self.session.commit()
         self.session.refresh()
 
-    def search_aluno_by_email(self, email: str):
-        return self.session.query(Aluno).filter_by(email=email).first()
+    def search_aluno_by_ra(self, ra: str):
+        return self.session.query(Aluno).filter_by(ra=ra).first()
     
-    def delete_user(self, user: Aluno):
+    def delete_aluno(self, aluno: Aluno):
         self.session.delete(aluno)
         self.session.commit()
         self.session.refresh()
 
-    def list_all_users(self):
+    def list_all_alunos(self):
         return self.session.query(Aluno).all()

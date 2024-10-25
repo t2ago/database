@@ -1,4 +1,7 @@
 import os
+import sys
+sys.path.append('/workspaces/database')
+
 from models.aluno import Aluno
 from services.aluno_services import AlunoService
 from repositories.aluno_repository import AlunoRepository
@@ -17,7 +20,7 @@ def main():
         email = input("Digite seu email: ")
         senha = input("Digite sua senha: ")
 
-        Aluno = Aluno(ra=ra, nome=nome, sobrenome=sobrenome, email=email, senha=senha)
+        aluno = Aluno(ra=ra, nome=nome, sobrenome=sobrenome, email=email, senha=senha)
         session.add(aluno)
         session.commit()
 
